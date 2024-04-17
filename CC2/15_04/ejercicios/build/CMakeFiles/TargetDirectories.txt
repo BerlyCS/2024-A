@@ -1,0 +1,3 @@
+/data/data/com.termux/files/home/cpp/2024-A/CC2/15_04/ejercicios/build/CMakeFiles/tarea.dir
+/data/data/com.termux/files/home/cpp/2024-A/CC2/15_04/ejercicios/build/CMakeFiles/edit_cache.dir
+/data/data/com.termux/files/home/cpp/2024-A/CC2/15_04/ejercicios/build/CMakeFiles/rebuild_cache.dir
