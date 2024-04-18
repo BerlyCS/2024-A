@@ -13,9 +13,9 @@ void insertar(vector<int> &array, int value, int &min)
         min=value;
     }
 
-    /* for (int i=0;i<size;i++) */
-    /*     cout<<array[i]<<" "; */
-    /* cout<<endl; */
+    for (int i=0;i<size;i++)
+        cout<<array[i]<<" ";
+    cout<<endl;
 }
 
 int main() {

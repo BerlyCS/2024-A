@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/lenovo/Documentos/2024-A/CC2/15_04/ejercicios/tarea.cpp" "CMakeFiles/tarea.dir/tarea.cpp.o" "gcc" "CMakeFiles/tarea.dir/tarea.cpp.o.d"
+  "/home/lenovo/Documentos/2024-A/CC2/15_04/cmake/funcs.cpp" "CMakeFiles/program.dir/funcs.cpp.o" "gcc" "CMakeFiles/program.dir/funcs.cpp.o.d"
+  "/home/lenovo/Documentos/2024-A/CC2/15_04/cmake/main.cpp" "CMakeFiles/program.dir/main.cpp.o" "gcc" "CMakeFiles/program.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,0 +1,3 @@
+/home/lenovo/Documentos/2024-A/CC2/15_04/cmake/build/CMakeFiles/program.dir
+/home/lenovo/Documentos/2024-A/CC2/15_04/cmake/build/CMakeFiles/edit_cache.dir
+/home/lenovo/Documentos/2024-A/CC2/15_04/cmake/build/CMakeFiles/rebuild_cache.dir
