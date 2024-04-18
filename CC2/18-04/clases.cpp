@@ -4,6 +4,7 @@ using namespace std;
 class point {
         int x,y;
     public:
+        friend class vector;
         point(int _x, int _y) : x(_x), y(_y) {}
         /* point(point &p1) : x(p1.getX()), y(p1.getY()) {} */
 
@@ -30,8 +31,7 @@ class vector {
         }
 
         void print_info() const {
-            cout<<"P = ("<<P->getX()<<" "<<P->getY()<<")\n";
-            cout<<"Q = ("<<Q->getX()<<" "<<Q->getY()<<")\n";
+            cout<<"Vector = ("<<Q->getX() - P->getX() <<", "<<Q->getY() - P->getY()<<")\n";
             cout<<"Length: "<<length<<"\n";
         }
 };
