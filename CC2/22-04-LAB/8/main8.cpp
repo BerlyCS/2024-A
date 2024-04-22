@@ -22,6 +22,9 @@ int main() {
 	f2 = new float[n];
 	fun8(f1,f2,n);
 
+	for (int i=0; i<n; i++) {
+		cout<<f1[i]<<" "<<f2[i]<<endl;
+	}
 }
 	
 

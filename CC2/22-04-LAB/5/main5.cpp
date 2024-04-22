@@ -5,16 +5,13 @@ en cero y sea retornado en el puntero dado. Imprima los valores desde donde se i
 #include <iostream> 
 using namespace std;
 
-int* fun5(int *p, int n) {
-	p=new int[n];
+int* fun5(int n) {
+	int *p=new int[n]();
 	return p;
-
 }
 
 int main() {
-	int *p;
-	fun5(p,5);
-
+	int *p = fun5(5);
 	for (int i=0; i<5; i++) {
 		cout<<i[p]<<" ";
 	}
