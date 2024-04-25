@@ -2,26 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El sistema solar - Inicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.2">
+    <title>Mi blog - Inicio</title>
 </head>
-<body>
+<body bgcolor="#FAFAFA">
     <header>
-        <h1>Bienvenido a mi sitio web</h1>
+        <h1>Bienvenido a mi blog</h1>
     </header>
     <nav>
         <ul>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="entrada1.html">Entrada 1</a></li>
+            <li><a href="galeria.html">Imagenes</a></li>
         </ul>
     </nav>
     <main>
         <h2>Página de inicio</h2>
-        <p>Bienvenido a mi página de inicio. Aquí puedes encontrar información sobre mi sitio web.</p>
-        <img src="imagen1.jpg" alt="Imagen 1">
+        <img src="imagen1.jpg" alt="Imagen 1" width="200">
+        <img src="gato.jpg" alt="Imagen 3" width="200">
     </main>
     <footer>
-        <p>Derechos de autor © 2024 Mi Sitio Web</p>
+        <p>Si deseas contactarte puedes llenar este formulario</p>
+        <h2>Formulario de contacto</h2>
+        <form action="" method="post">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje"></textarea><br>
+            <input type="submit" value="Enviar">
+        </form>
+
+        <div style="background-color:green;color:white; padding:20px;">
+            <p>Gracias por sus mensajes</p>
+            <p>Estare revisando el correo</p>
+   <!--Comentario-->
+        </div>
+
     </footer>
 </body>
 </html>
