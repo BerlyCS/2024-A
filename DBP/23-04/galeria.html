@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>Galería de imágenes</h1>
+        <h3> <strong> <b> Lo siguiente es una galeria de imagenes que fue subido por algunos usuarios </b></strong></h3>
     </header>
     <nav>
         <ul>
@@ -17,12 +17,27 @@
     </nav>
     <main>
         <h2>Imágenes</h2>
-        <img src="imagen2.jpg" alt="Imagen 2">
-        <img src="imagen3.jpg" alt="Imagen 3">
+        <hr> 
+        <img src="banana.gif" width="200" alt="Banana">
+        <img src="gato.jpg" width="200" alt="Imagen 3">
+        <img src="tiziano.jpg" width="200" alt="Imagen 3">
+        <img src="ginger.jpg" width="200" alt="Imagen 3">
     </main>
     <footer>
-        <p>Derechos de autor © 2024 Mi Sitio Web</p>
-    </footer>
+        <h5> Si quieres subir una imagen a este sitio, ingresa con tu cuenta</h5>
+        <form action="index.html" method="POST">
+            <input name="Usuario"/><br />
+            <input type="password" name="contraseña"/><br />
+            <input type="submit" name="enviar"/><br/>
+            <input type="checkbox" name="Enviar correo"/>Envia correo de recuperacion<br/>
+            <input type="checkbox"/>Mantener sesion activa<br/>
+            <svg width="10" height="10">
+                <circle cx="80" cy="80 r="10" fill="#ACACAC"/>
+            </svg>
+  
+         </form>
+
+      </footer>
 </body>
 </html>
 
