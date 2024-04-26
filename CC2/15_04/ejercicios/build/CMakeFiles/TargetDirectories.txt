@@ -1,3 +1,0 @@
-/home/lenovo/Documentos/2024-A/CC2/15_04/ejercicios/build/CMakeFiles/tarea.dir
-/home/lenovo/Documentos/2024-A/CC2/15_04/ejercicios/build/CMakeFiles/edit_cache.dir
-/home/lenovo/Documentos/2024-A/CC2/15_04/ejercicios/build/CMakeFiles/rebuild_cache.dir
