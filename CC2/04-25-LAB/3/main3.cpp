@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 /****
  3. Cree una funci ́on que reciba un puntero de caracteres por referencia conteniendo un texto de 100 caracteres
@@ -12,8 +13,9 @@ void fun3(char *&text, int size) {
     for (int i=0; i<size; i++) {
 
         for (int j=0;j<10;j++) {
-            if (text[i] == vocals[i]) {
+            if (text[i] == vocals[j]) {
                 text[i] = 'X';
+                break;
             }
         }
         cout<<text[i];
@@ -23,7 +25,7 @@ void fun3(char *&text, int size) {
 
 int main() {
     char* text = new char[5];
-    text = "aeiou";
+    strcpy(text, "aeiou");
     fun3(text, 5);
 }
 

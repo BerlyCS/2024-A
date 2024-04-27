@@ -1,3 +1,4 @@
+#include <cstring>
 #include <iostream>
 using namespace std;
 
@@ -13,12 +14,15 @@ char* fun4(char* s1, int size1, char* s2, int size2) {
     for (int j=0; j<size2; j++, i++) 
 	    tmp[i] = s2[j];
 
-
-
     cout<<s1<<endl;
     cout<<s2<<endl;
-
+    cout<<tmp<<endl;
+    return tmp;
 }
-int main() {
 
+int main() {
+    char* st1 = new char[8]; strcpy(st1, "Texto1 ");
+    char* st2 = new char[8]; strcpy(st2, "Texto2 ");
+
+    fun4(st1, 7, st2, 7);
 }
