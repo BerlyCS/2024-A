@@ -1,11 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+    font-family: Helvetica, sans-serif;
+    margin: 100;
     padding: 0;
+    
 }
 
 header {
-    background-color: #333;
+    background-color: #EF3;
     color: white;
     padding: 20px;
     text-align: center;
@@ -17,7 +18,7 @@ main {
 
 footer {
     background-color: #333;
-    color: white;
+    color: black;
     padding: 10px;
     text-align: center;
     position: fixed;
@@ -36,26 +37,34 @@ footer {
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    color: #333;
+    color: #555;
     line-height: 1.6;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 200px;
     margin: 0 auto;
     padding: 20px;
 }
 
 /* Estilos del encabezado */
 header {
-    background-color: #333;
+    background-color: #555;
     color: white;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
 }
 
 h1 {
     margin-bottom: 20px;
+    padding: 10px;
+    color: #333;
+}
+
+header {
+    box-shadow: gray;
+    box-sizing: 10px;
+    
 }
 
 /* Estilos del contenido principal */
@@ -63,7 +72,7 @@ main {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(67, 0, 0.2, 0.1);
 }
 
 p {
