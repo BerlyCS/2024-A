@@ -9,38 +9,50 @@ vector<char*> fun4(vector<char*> words, vector<int> sizes) {
     vector<char*> result;
     for (int i=0;i<words.size(); i++) {
         for (int j=0; j<sizes[i]; j++) {
+            bool found=false;
             switch (words[i][j]) {
                 case '1':
                     result.push_back(words[i]);
+                    found = true;
                     break;
                 case '2':
                     result.push_back(words[i]);
+                    found = true;
                     break;
                 case '3':
                     result.push_back(words[i]);
+                    found = true;
                     break;
                 case '4':
                     result.push_back(words[i]);
+                    found = true;
                     break;
                 case '5':
                     result.push_back(words[i]);
+                    found = true;
                     break;
                 case '6':
                     result.push_back(words[i]);
+                    found = true;
                     break;
                case '7':
                     result.push_back(words[i]);
+                    found = true;
                     break;
                case '8':
                     result.push_back(words[i]);
+                    found = true;
                     break;
                case '9':
                     result.push_back(words[i]);
+                    found = true;
                     break;
                case '0':
                     result.push_back(words[i]);
+                    found = true;
                     break;
             }
+            if (found) break;
         }
     }
 

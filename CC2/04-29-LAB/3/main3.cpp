@@ -6,14 +6,27 @@ vector [(12,20),(15,32),(45,89)], el resultado que se debe obtener es la uni ́o
 #include <vector>
 using namespace std;
 
-void fun3(vector<vector<int>> test) {
+ vector<vector<int>> fun3(vector<vector<int>> test) {
+    vector<vector<int>> tmp;
+    tmp.push_back(test[0]);
     for (int i=0; i<test.size()-1; i++) {
-            
+        if ( !(test[i][1] > test[i+1][0]) ){
+            tmp.push_back(test[i+1]);
+        }
     }
+    return tmp;
 }
 
 
 int main() {
     vector<vector<int>> test = {{12,20},{15,32},{45,89}};
-    fun3(test);
+    vector<vector<int>> result = fun3(test);
+
+    for (int i=0; i<result.size();i++) {
+        for (int j=0;j<2;j++) {
+            cout<<result[i][j]<<" ";
+        }
+        cout<<"  ";
+    }
+
 }

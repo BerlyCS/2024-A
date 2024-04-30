@@ -12,9 +12,10 @@ vector<int> gen_random(int size) {
     vector<int> tmp(size); 
     
     for(int i=0;i<size;i++)
-         tmp[i] = rand();
+         tmp[i] = rand()%1000;
     return tmp;
 }
+
 vector<int> fun1(vector<int> vect, int k) {
 	int size = vect.size();
 

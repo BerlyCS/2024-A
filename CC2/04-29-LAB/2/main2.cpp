@@ -15,7 +15,6 @@ vector<int> gen_random(int size) {
 }
 //eliminar elementos duplicados
 vector<int> fun2(vector<int> vect) {
-    cout<<"o"<<' ';
     
     vector<int> fun2;
     fun2.push_back(vect[0]);
@@ -40,7 +39,7 @@ vector<int> fun2(vector<int> vect) {
 int main() {
     vector<int> test = gen_random(1000);
     vector<int> result = fun2(test); 
-cout<<result.size()<<endl;
+cout<<"Elementos: "<<result.size()<<endl<<"Elementos repetidos: ";
     for (int i: result) {
         cout<< i<<" ";
     }
