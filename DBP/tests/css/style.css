@@ -1,98 +1,61 @@
-body {
-    font-family: Helvetica, sans-serif;
-    margin: 100;
-    padding: 0;
-    
+html {
+  font-size: 24px; /* px quiere decir 'píxeles': el tamaño de la fuente base es ahora de 10 píxeles de altura */
+  font-family: "Open Sans", sans-serif; /* Este debe ser el resto del resultado que obtuviste de Google fonts */
+  /* background-color: forestgreen; */
+  background-image: url('ginger.jpg');
+  background-size: 30px auto;
+  background-repeat: repeat;
+  animation: bg_move 2s infinite linear;
+  overflow: hidden;
+
 }
 
-header {
-    background-color: #EF3;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-main {
-    padding: 20px;
-}
-
-footer {
-    background-color: #333;
-    color: black;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}   
-
-/* Reset de estilos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  border: 1px solid red;
 }
 
-/* Estilos generales */
+h1#text1 {
+  animation: linear move_text 4s infinite;
+}
+
+@keyframes bg_move {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: 60px;
+  }
+}
+@keyframes move_text {
+  0% {
+    transform: rotate3d(1, 1, 1, 0deg);
+  }
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    color: #555;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Estilos del encabezado */
-header {
-    background-color: #555;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-
-h1 {
-    margin-bottom: 20px;
-    padding: 10px;
-    color: #333;
-}
-
-header {
-    box-shadow: gray;
-    box-sizing: 10px;
+  width: 600px;
+  margin: 0 auto;
+  background-color: #ff9500;
+  padding: 20px 20px 20px 40px;
+  border: 5px solid black;
     
 }
 
-/* Estilos del contenido principal */
-main {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(67, 0, 0.2, 0.1);
-}
-
-p {
-    margin-bottom: 15px;
-}
-
-/* Estilos del pie de página */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-
-/* Estilos de los enlaces */
 a {
-    color: #007bff;
-    text-decoration: none;
+    color: greenyellow;
+    background-color: black;
+    
 }
 
-a:hover {
-    text-decoration: underline;
+center a {
+  color: green;
+  background-color: gray;
+}
+
+header h1 {
+  text-align: center;
+  background-color: #F282325A;
 }
