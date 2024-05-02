@@ -1,5 +1,7 @@
+// dynamic allocation and polymorphism
 #include <iostream>
 using namespace std;
+
 class Polygon {
   protected:
     int width, height;
@@ -13,20 +15,17 @@ class Polygon {
 class Rectangle: public Polygon {
   public:
     Rectangle(int a,int b) : Polygon(a,b) {}
-    int area() { return width*height; }
+    int area()
+      { return width*height; }
 };
 
 class Triangle: public Polygon {
   public:
     Triangle(int a,int b) : Polygon(a,b) {}
-    int area() { return width*height/2; }
+    int area()
+      { return width*height/2; }
 };
 
 int main() {
-    Polygon** p= new Polygon*[5];
-    p[0] = new Rectangle(5,4);
-    p[0]->printarea();
-
-    p[1] = new Triangle(4,5);
-    cout<<p[1]->area()<<endl;
+  Polygon poligono(4,5);
 }
