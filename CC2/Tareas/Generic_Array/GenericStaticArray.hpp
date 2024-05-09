@@ -4,29 +4,29 @@
 
 #include <iostream>
 
-template <typename T, int S>
+template <typename T, int SIZE>
 class GenericStaticArray {
     private:
         int size;
         T* data;
     public:
-        GenericStaticArray<T,S>();
-        GenericStaticArray<T,S>(GenericStaticArray<T, S> &b);
-        ~GenericStaticArray<T,S> ();
+        GenericStaticArray<T,SIZE>();
+        GenericStaticArray<T,SIZE>(GenericStaticArray<T, SIZE> &b);
+        ~GenericStaticArray<T,SIZE> ();
         T get(int index);
         void set(int index, T val);
         int getsize();
         void print(); 
 };
 
-template <typename T, int S>
-GenericStaticArray<T,S>::GenericStaticArray() {
-    size = S;
+template <typename T, int SIZE>
+GenericStaticArray<T,SIZE>::GenericStaticArray() {
+    size = SIZE;
     data = new T[size];
 }
 
-template <typename T, int S>
-GenericStaticArray<T,S>::GenericStaticArray(GenericStaticArray<T, S> &b) {
+template <typename T, int SIZE>
+GenericStaticArray<T,SIZE>::GenericStaticArray(GenericStaticArray<T, SIZE> &b) {
     size = b.getsize();
     data = new T[size];
     for (int i=0; i<size; i++) {
@@ -34,31 +34,31 @@ GenericStaticArray<T,S>::GenericStaticArray(GenericStaticArray<T, S> &b) {
     }
 }
 
-template <typename T, int S>
-GenericStaticArray<T, S>::~GenericStaticArray() {
+template <typename T, int SIZE>
+GenericStaticArray<T, SIZE>::~GenericStaticArray() {
     delete[] data;
 }
 
-template <typename T, int S>
-T GenericStaticArray<T, S>::get(int index) {
+template <typename T, int SIZE>
+T GenericStaticArray<T, SIZE>::get(int index) {
     return data[index];
 }
 
-template <typename T, int S>
-int GenericStaticArray<T, S>::getsize() {
+template <typename T, int SIZE>
+int GenericStaticArray<T, SIZE>::getsize() {
     return this->size;
 }
 
-template <typename T, int S>
-void GenericStaticArray<T, S>::print() {
+template <typename T, int SIZE>
+void GenericStaticArray<T, SIZE>::print() {
     for (int i=0; i<size; i++) {
         std::cout<<data[i]<<' ';
     }
     std::cout<<std::endl;
 }
 
-template <typename T, int S>
-void GenericStaticArray<T, S>::set(int index, T val) {
+template <typename T, int SIZE>
+void GenericStaticArray<T, SIZE>::set(int index, T val) {
     if (index < 0 || index >= size) 
         return;
 
