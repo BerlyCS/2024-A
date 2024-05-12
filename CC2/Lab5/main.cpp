@@ -1,7 +1,6 @@
 /*1. Defina una funci´on Template que permita ordenar Array est´aticos de tipo int, float, double, long y char de
 forma ascendente y descendente*/
 #include <iostream>
-#include <utility>
 using namespace std;
 
 template<typename T>
