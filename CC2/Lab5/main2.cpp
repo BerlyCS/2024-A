@@ -45,16 +45,20 @@ int main() {
     nodo<long>* ltree = new nodo<long>(1);
     nodo<double>* dtree = new nodo<double>(1.0);
 
-    for (int i=0; i<10; i++) {
+    for (int i=0; i<1000; i++) {
         insertar(itree, rand()%1000);
-        insertar(ftree, static_cast<float>(rand()/473382.0));
+        insertar(ftree, static_cast<float>(rand()/45793882.9));
         insertar(ctree, char(rand()%26+97));
         insertar(ltree, static_cast<long>(rand()%1000));
-        insertar(dtree, static_cast<double>(rand()/482342.4));
+        insertar(dtree, static_cast<double>(rand()/78262342.4));
     }
     InOrden(itree);
+    cout<<endl;
     InOrden(ctree);
+    cout<<endl;
     InOrden(ftree);
+    cout<<endl;
     InOrden(ltree);
+    cout<<endl;
     InOrden(dtree);
 }
