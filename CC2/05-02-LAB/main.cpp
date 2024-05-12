@@ -1,4 +1,3 @@
-#include <bits/chrono.h>
 #include <iostream>
 #include <vector>
 #include <chrono>
@@ -106,23 +105,32 @@ void delete_cube(int *** cube) {
 
 }
 
-int main() {
+void ejercicio1() {
     int resp = -1;
     auto start = std::chrono::high_resolution_clock::now();
-/* vector<vector<vector<int>>> vect(5, vector<vector<int>>(6, vector<int>(5, 0))) */ 
     vector<vector<vector<int>>> test1 = fun1();
-    /* print(test1); */
     vector<vector<vector<int>>> test2 = fun1();
-    /* print(test2); */
+
     vector<vector<vector<int>>> suma = suma_mat(test1, test2);
-    /* print(suma); */
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop-start);
+    cout<< resp << " for " << duration.count() << " ms" << endl;
+}
+
+void ejercicio2() {
+    int resp = -1;
+    auto start = std::chrono::high_resolution_clock::now();
+    int*** a = fun2();
+    int*** b = fun2();
+    int *** c = suma_mat(a,b);
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(stop-start);
     cout<< resp << " for " << duration.count() << " ms" << endl;
 
-    /* int*** a = fun2(); */
-    /* int*** b = fun2(); */
-    /* int *** c = suma_mat(a,b); */
-    /* print(c); */
+}
 
+int main() {
+    /* ejercicio1(); */
+    ejercicio2();
+    return 0;
 }
