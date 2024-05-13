@@ -47,6 +47,11 @@
     object-fit: cover; 
 }
 
+.copyright {
+	background-color: #1a2952;
+	padding: 20px 30px 10px 30px;
+}
+
 /* Shortcuts */
 
 .pd-0{
