@@ -103,6 +103,9 @@
 .pd-5 {
 	padding: 5%;
 }
+.pd-10px {
+	padding: 10px;
+}
 .pt-5{
 	padding-top: 5%;
 }
@@ -152,7 +155,10 @@
 	background-color: rgb(244, 244, 244);
 }
 .bg-gray2{
-	background-color: rgba(94, 92, 92, 0.3);
+	background-color: rgb(129, 129, 129);
+}
+.bg-gray3 {
+	background-color: rgb(240, 240, 240);
 }
 .bg-img-block{
 	background-size: cover;
