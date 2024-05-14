@@ -26,18 +26,40 @@
 	src: url(../fonts/Lato-Bold.ttf);
 }
 
-.menu {
-	padding: 30px;
-	text-decoration: none;
+
+.resize{
+	width: 200px;
+	height: 150px;
+	padding: 5%;
+	object-fit: cover;
 }
 
-.menu-title {
-	font-family: LatoBold;
+.resize2 {
+	width: 30vh;
+	height: 40vh;
+	padding: 0;
+	margin: 0;
+	object-fit: cover;
+}
+
+.resize3 {
+	width: 200px;
+	height: 200px;
+	padding: 5%;
+	object-fit: cover;
+}
+
+.card {
+	border: none;
+}
+
+.bold {
+	font-weight: bolder;
 }
 
 .image-container {
     width: 100%;
-    height: 70%;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -47,21 +69,48 @@
     object-fit: cover; 
 }
 
+.texture-1 {
+	background-image: url(../img/textura_2.jpg);
+}
+.texture-2 {
+	background-image: url(../img/textura_1.jpg);
+}
+.texture-3 {
+	background-image: url(../img/tile2.png);
+}
+
 .copyright {
 	background-color: #1a2952;
 	padding: 20px 30px 10px 30px;
 }
+
+.setblue {
+	background-color: #192951;
+	outline: #1a2952;
+}
+
+.btn {
+	background-color: #1a2952;
+	border: #1a2952;
+}
+
 
 /* Shortcuts */
 
 .pd-0{
 	padding: 0;
 }
+.pd-5 {
+	padding: 5%;
+}
 .pt-5{
 	padding-top: 5%;
 }
 .pb-5{
 	padding-bottom: 5%;
+}
+.pd-10 {
+	padding: 10%;
 }
 .mg-0{
 	margin: 0;
@@ -90,6 +139,9 @@
 .text-gray{
 	color: rgb(83, 88, 95);
 }
+.text-black {
+	color: #000000;
+}
 .text-blue{
  	color: #192951;
 }
@@ -100,11 +152,10 @@
 	background-color: rgb(244, 244, 244);
 }
 .bg-gray2{
-	background-color: rgba(0, 0, 0,0.3);
+	background-color: rgba(94, 92, 92, 0.3);
 }
 .bg-img-block{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 }
-

@@ -16,78 +16,81 @@
   <script src="css/bootstrap.min.js"></script>
 
   <!-- MENU -->
-  <div class="container-fluid menu">
-    <div>
-      <div class="text-center menu-title">
-        <h1><a href="#">ESCUELA DE DANZA</a></h1>
+    <div class="container-fluid pd-5">
+      <div>
+        <div class="text-center">
+          <h1><a href="index.html" class="a-none-decoration bold text-center pd-5">ESCUELA DE DANZA</a></h1>
+        </div>
+      </div>
+      <div> 
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="about.html">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="clases.html">Clases</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" >Contactanos</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div> 
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="contact.html">Nosotros</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="clases.html">Clases</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="blog.html">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Contactanos</a>
-        </li>
-      </ul>
-    </div>
 
-    <div>
-
-    </div>
+  <div class="card text-white">
+      <img src="img/dance_1.jpg" class="card-img">
+      <div class="card-img-overlay pd-5">
+        <h1>STUDIO</h1>
+        <p>Juilliart studios is the prefect lace to find your fell with over 20 unique styles of dance nd 80 teachers to choose from</p>
+        <button type="button" class="btn btn-primary setblue"><p>Inscribete</p></button>
+      </div>
   </div>
 
-  <div class="first-panel">
-    <img src="img/dance_1.jpg" class="img-fluid">
-    <h1 id="upper-text">STUDIO</h1>
-    <p>Juliart studios is the prefect lace to find your fell with over 20 unique styles of dance nd 80 teachers to choose from</p>
-    <button type="button" class="btn btn-primary"><p>Inscribete</p></button>
-  </div>
-
-  <div>
-    <h3></h3>
-    <img src="img/decoration_2.png">
-    <button type="button" class="btn btn-primary">Primary</button>
-  </div>
+ <div class="text-center container-fluid texture-1" style="padding: 20px 20%;">
+    <h3>Juilliart cuenta con una amplia trayectoria y reputacion,
+      brindando una formacion de excelencia a cientos de amantes de la danza
+    </h3>
+    <img src="img/decoration_1.png" class="text-center pd-5" style="width: 35%;">
+    <br/>
+    <button type="button" class="btn btn-primary setblue">Primary</button>
+ </div>
 
   <div class="container-fluid panel-2 pd-0">
     <div class="row">
       <div class="col pd-0">
         <div class="image-container">
-          <img src="img/instructor_4.jpg" class="img-fluid w-100">
+          <img src="img/instructor_4.jpg" class="img-fluid">
         </div>
       </div>
       <div class="col pd-0">
         <div class="image-container">
-          <img src="img/profesor_9.jpg" class="img-fluid w-100">
+          <img src="img/profesor_9.jpg" class="img-fluid">
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container-fluid" style="padding:30px;">
+  <div class="container-fluid texture-1" style="padding: 15%;">
     <h3 class="text-center"><em>"La danza es un poema en el que cada movimiento es una palabra"</em></h3>
   </div>
 
-  <div class="container-fluid panel-5">
-    <div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <h3>Visitanos</h3>
-      <p>Te juliart School<br/>60 Lincoln Center Plaza<br/>New York, NY 10023<br/>(212) 799-5000</p>
-    </div>
-    <div>
-      <img src="img/mapa.png" class="img-fluid">
+  <div class="container-fluid setblue text-white pd-10">
+    <div class="row">
+      <div class="col">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3 class="bold">Visitanos</h3>
+        <p>Te juliart School<br/>60 Lincoln Center Plaza<br/>New York, NY 10023<br/>(212) 799-5000</p>
+      </div>
+      <div class="col-md-6">
+        <img src="img/mapa.png" class="img-fluid">
+      </div>
     </div>
   </div>
 
-  <div class="panel-6">
+  <div class="container-fluid pd-10">
     <div>
       <p><b>Contactanos</b></p>
     </div>
@@ -97,14 +100,14 @@
         <label for="validationCustom01" class="form-label">First name</label>
         <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
         <div class="valid-feedback">
-          Looks good!
+          Correcto
         </div>
       </div>
       <div class="col-md-4">
         <label for="validationCustom02" class="form-label">Last name</label>
         <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
         <div class="valid-feedback">
-          Looks good!
+          Correcto
         </div>
       </div>
       <div class="col-md-4">
@@ -113,7 +116,7 @@
           <span class="input-group-text" id="inputGroupPrepend">@</span>
           <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
           <div class="invalid-feedback">
-            Please choose a username.
+            Porfavor escribe tu nombre de usuario.
           </div>
         </div>
       </div>
@@ -121,7 +124,7 @@
         <label for="validationCustom03" class="form-label">City</label>
         <input type="text" class="form-control" id="validationCustom03" required>
         <div class="invalid-feedback">
-          Please provide a valid city.
+          Ingrese un pais valido.
         </div>
       </div>
       <div class="col-md-3">
