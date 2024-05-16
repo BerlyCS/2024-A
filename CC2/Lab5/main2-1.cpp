@@ -2,6 +2,7 @@
 presentar problemas en tiempo de ejecuci´on. (se debe trabajar sin problemas con los datos int, float, double,
 long y char ). Almacene los nodos hijos en un vector. Incluya una funci´on para mostrar en pantalla el ´arbol
 de la mejor forma.*/
+//USANDO STRUCT
 #include <cstdlib>
 #include <iostream>
 using namespace std;
