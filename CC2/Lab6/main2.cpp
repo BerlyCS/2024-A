@@ -14,7 +14,6 @@ tuaci ́on extra por agregar m ́as operadores al programa.
 #include <string>
 using namespace std;
 
-//178.453
 int power(int num, int p) {
     for (int i=0;i<p;i++){
         num *= num;
@@ -22,10 +21,11 @@ int power(int num, int p) {
     return num;
 }
 
-bool tiene_operador(string expr) {
-    for (int i=0;expr[i++]!='\0';){
-        if ()
-    }
+bool es_operador(char letra) {
+    if ( letra=='+' || letra=='x' || letra=='-' || letra=='^' || letra=='/')
+        return true;
+
+    return false;
 }
 
 double str_double(string num) {
@@ -49,12 +49,31 @@ double str_double(string num) {
     return tmp;
 }
 
+string extraer_expresion(string expr, int op_index) {
+    int i=op_index-1;
+    string tmp;
+    if (i<0) tmp="0";
+    while ( !es_operador(expr[i]) ) {
+        tmp = expr[i] + tmp;
+        i--;
+        if (i<0) break;
+    }
+    i=op_index+1;
+    tmp = tmp + expr[op_index];
+    while ( !es_operador(expr[i]) ) {
+        tmp = tmp + expr[i]; 
+        i++;
+        if (i >= expr.size()) break;
+    }
+    return tmp;
+}
+
 //3+4
 double operacion(string suma) {
     string num;
     int op_index;
     double a,b;
-    for (int i=0; suma[i++]!='\0';) {
+    for (int i=0; i<suma.size(); i++) {
         if (suma[i] == '+') {
             op_index = i;
             break;
@@ -66,36 +85,126 @@ double operacion(string suma) {
     return a+b;
 }
 
+int operador(string key) {
+    for (int i=0; i<key.size(); i++) {
+        if (key[i]=='^') {
+            return i;
+        }
+    }
+    for (int i=0; i<key.size(); i++) {
+        if (key[i]=='*' || key[i] == '/') {
+            return i;
+        }
+    }
+    for (int i=0; i<key.size(); i++) {
+        if (key[i]=='-') {
+            return i;
+        }
+    }
+    for (int i=0; i<key.size(); i++) {
+        if (key[i]=='+') {
+            return i;
+        }
+    }
+    return -1;
+}
+
 class calculadora {
     protected:
-        string key;
         string separar();
+        void reescribir(double, int, int);
     public:
+        string key;
+        void set(string key) {
+            this->key=key;
+        }
         calculadora(string s) : key(s) {}
-        virtual void operacion() =0;
-        void operar();
+        virtual double operacion(string, int&,int&) {
+            return 0.0;
+        };
+        string operar();
+        int op_index();
 };
 
+//CLASE
 string calculadora::separar() {
     string expr;
-    for (int i=0; key[i]!='\0';) {
-        if ()
-    }
+    int op_ind = op_index();
+    expr = extraer_expresion(key, op_ind);
     return expr;
+}
+
+bool tiene_operador(string key) {
+    for (char i: key) {
+        if (es_operador(i))
+            return true;
+    }
+    return false;
+}
+
+void reescribir(string& key, double value, int ini, int fin) {
+    key = key.substr(0,ini) + to_string(value) + key.substr(fin,key.size());
+}
+
+string calculadora::operar() {
+    string expr = separar();
+    int ini, fin;
+    double resultado = operacion(expr, ini, fin);
+    reescribir(resultado, ini, fin);
+    return key;
+}
+
+void calculadora::reescribir(double value,int ini, int fin) {
+    key = key.substr(0,ini) + to_string(value) + key.substr(fin,key.size());
+}
+
+int calculadora::op_index() {
+    for (int i=0; i<key.size(); i++) {
+        if (key[i]=='^') {
+            return i;
+        }
+    }
+    for (int i=0; i<key.size(); i++) {
+        if (key[i]=='*' || key[i] == '/') {
+            return i;
+        }
+    }
+    for (int i=0; i<key.size(); i++) {
+        if (key[i]=='-') {
+            return i;
+        }
+    }
+    for (int i=0; i<key.size(); i++) {
+        if (key[i]=='+') {
+            return i;
+        }
+    }
+    return 0;
 }
 
 class suma : public calculadora {
     public:
         suma(string s) : calculadora(s) {}
+        double operacion(string, int&, int&) override;
 };
 
-void completar(string expr) {
-    for ( int i=0; i < expr.size(); i++ ) {
-
-        return;
+double suma::operacion(string expr, int& ini, int& fin) {
+    string num;
+    int op_index;
+    double a,b;
+    for (int i=0; i<expr.size();i++) {
+        if (expr[i] == '+') {
+            op_index = i;
+            break;
+        }
     }
+    a = str_double(expr.substr(0,op_index));
+    b = str_double(expr.substr(op_index+1, expr.size()));
+    /* cout << a << ' ' << b; */
+    return a+b;
 }
 
 int main() {
-
+    string expr = "3+50";
+    cout<<operacion(expr);
 }
