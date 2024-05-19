@@ -168,9 +168,8 @@ int find_operator(string key) {
 }
 
 bool tiene_operador(string key) {
-    int i;
-    if (key[0] == '-' || key[0] == '+') i=1;
-    else i=0;
+    int i=0;
+    while (key[i] == '+' || key[i] == '-') i++;
     for (; i<key.size();i++) {
         if (es_operador(key[i]))
             return true;
