@@ -16,6 +16,12 @@ using namespace std;
 
 int power(int num, int p) {
     int base = num;
+    if (p < 1) {
+        for (int i=p;i<1;i++){
+            num /= base;
+            return num;
+        }
+    }
     for (int i=0;i<p-1;i++){
         num *= base;
     }
@@ -23,7 +29,14 @@ int power(int num, int p) {
 }
 
 bool es_operador(char letra) {
-    if ( letra=='+' || letra=='x' || letra=='-' || letra=='^' || letra=='/')
+    if ( letra=='+' || letra=='*' || letra=='-' || letra=='^' || letra=='/')
+        return true;
+
+    return false;
+}
+
+bool es_op(char letra) {
+    if ( letra=='+' || letra=='*' || letra=='^' || letra=='/')
         return true;
 
     return false;
@@ -31,9 +44,12 @@ bool es_operador(char letra) {
 
 double str_double(string num) {
     double tmp= 0.0;
-    bool decimal=false;
+    bool decimal=false, negative=false;
     int level=1;
     for (int i=0; i<num.size(); i++) {
+        if (num[i] == '-') {
+            negative=true;
+        }
         if ( num[i] == '.' )
             decimal=true;
         else if ( num[i] < '0' || num[i] > '9' ) continue;
@@ -47,6 +63,7 @@ double str_double(string num) {
             tmp += num[i] - 48;
         }
     }
+    if (negative) tmp*=-1;
     return tmp;
 }
 
@@ -59,6 +76,36 @@ string extraer_expresion(string expr, int op_index, int& ini, int& fin) {
             tmp = expr[i] + tmp;
             i--;
             if (i<0) break;
+            if (expr[i] == '-') tmp= expr[i] + tmp;
+        }
+    }
+    ini = i+1;
+    i=op_index+1;
+    tmp = tmp + expr[op_index];
+    if (i>=expr.size()) {
+        tmp= tmp + '0';
+    } else {
+        while ( !es_op(expr[i]) ) {
+            tmp = tmp + expr[i]; 
+            i++;
+            if (i >= expr.size()) break;
+        }
+    }
+    fin=i;
+    return tmp;
+}
+
+
+string extraer_expresion_suma(string expr, int op_index, int& ini, int& fin) {
+    int i=op_index-1;
+    string tmp;
+    if (i<0) tmp="0";
+    else { 
+        while ( !es_operador(expr[i]) ) {
+            tmp = expr[i] + tmp;
+            i--;
+            if (i<0) break;
+            if (expr[i] == '-') tmp= expr[i] + tmp;
         }
     }
     ini = i+1;
@@ -76,7 +123,6 @@ string extraer_expresion(string expr, int op_index, int& ini, int& fin) {
     fin=i;
     return tmp;
 }
-
 //3+4
 double operacion(string suma) {
     string num;
@@ -105,13 +151,16 @@ int find_operator(string key) {
             return i;
         }
     }
-    for (int i=0; i<key.size(); i++) {
-        if (key[i]=='-') {
-            return i;
-        }
-    }
-    for (int i=0; i<key.size(); i++) {
-        if (key[i]=='+') {
+
+    int i;
+    /* for (; i<key.size() -1; i++) { */
+    /*     if ((key[i]=='+' || key[i]=='-') && */
+    /*         (key[i+1] != '+' || key[i+1] != '-' )) { */
+    /*         return i; */
+    /*     } */
+    /* } */
+    for (i=1; i<key.size(); i++) {
+        if (key[i]=='+' || key[i]=='-') {
             return i;
         }
     }
@@ -119,8 +168,11 @@ int find_operator(string key) {
 }
 
 bool tiene_operador(string key) {
-    for (char i: key) {
-        if (es_operador(i))
+    int i;
+    if (key[0] == '-' || key[0] == '+') i=1;
+    else i=0;
+    for (; i<key.size();i++) {
+        if (es_operador(key[i]))
             return true;
     }
     return false;
@@ -153,30 +205,34 @@ class suma : public calculadora {
         void operar(string& expr) override{
             int index = find_operator(expr);
             int ini, fin;
-            string base = extraer_expresion(expr, index, ini, fin);
+            cout<<"op-ind:" << index<<endl;
+            string base = extraer_expresion_suma(expr, index, ini, fin);
+            cout<<"bas:"<<base<<endl;
             double resultado;
             double sumando1,sumando2;
-            sumando1 = str_double(base.substr(0,index));
-            sumando2 = str_double(base.substr(index+1, expr.size()));
+            int b_index=find_operator(base);
+            sumando1 = str_double(base.substr(0,b_index));
+            sumando2 = str_double(base.substr(b_index, base.size()));
+
             resultado = sumando1 + sumando2;
             reescribir(expr, resultado, ini, fin);
         }
 };
 
-class resta : public calculadora {
-    public:
-        void operar(string& expr) override{
-            int index = find_operator(expr);
-            int ini, fin;
-            string base = extraer_expresion(expr, index, ini, fin);
-            double resultado;
-            double sumando1,sumando2;
-            sumando1 = str_double(base.substr(0,index));
-            sumando2 = str_double(base.substr(index+1, expr.size()));
-            resultado = sumando1 - sumando2;
-            reescribir(expr, resultado, ini, fin);
-        }
-};
+/* class resta : public calculadora { */
+/*     public: */
+/*         void operar(string& expr) override{ */
+/*             int index = find_operator(expr); */
+/*             int ini, fin; */
+/*             string base = extraer_expresion(expr, index, ini, fin); */
+/*             double resultado; */
+/*             double sumando1,sumando2; */
+/*             sumando1 = str_double(base.substr(0,index)); */
+/*             sumando2 = str_double(base.substr(index+1, expr.size())); */
+/*             resultado = sumando1 - sumando2; */
+/*             reescribir(expr, resultado, ini, fin); */
+/*         } */
+/* }; */
 
 class multiplicacion : public calculadora {
     public:
@@ -184,15 +240,17 @@ class multiplicacion : public calculadora {
             int index = find_operator(expr);
             int ini, fin;
             string base = extraer_expresion(expr, index, ini, fin);
+            /* cout<<"bas:"<<base<<endl; */
             double resultado;
             double sumando1,sumando2;
-            sumando1 = str_double(base.substr(0,index));
-            sumando2 = str_double(base.substr(index+1, expr.size()));
+            int b_index=find_operator(base);
+            
+            sumando1 = str_double(base.substr(0,b_index));
+            sumando2 = stod(base.substr(b_index+1, base.size()));
             resultado = sumando1 * sumando2;
             reescribir(expr, resultado, ini, fin);
         }
 };
-
 
 class division : public calculadora {
     public:
@@ -200,10 +258,16 @@ class division : public calculadora {
             int index = find_operator(expr);
             int ini, fin;
             string base = extraer_expresion(expr, index, ini, fin);
+            /* cout<<ini<<' '<<fin<<index<<endl; */
+            cout<<"bas:"<<base<<endl;
             double resultado;
             double sumando1,sumando2;
-            sumando1 = str_double(base.substr(0,index));
-            sumando2 = str_double(base.substr(index+1, expr.size()));
+            int b_index=find_operator(base);
+            cout<<base.substr(b_index+1,base.size())<<endl;
+            
+            sumando1 = str_double(base.substr(0,b_index));
+            sumando2 = stod(base.substr(b_index+1, base.size()));
+            cout<<sumando1<<' '<<sumando2<<endl;
             resultado = sumando1 / sumando2;
             reescribir(expr, resultado, ini, fin);
         }
@@ -215,10 +279,13 @@ class potencia : public calculadora {
             int index = find_operator(expr);
             int ini, fin;
             string base = extraer_expresion(expr, index, ini, fin);
+            cout<<"bas:"<<base<<endl;
             double resultado;
             double sumando1,sumando2;
-            sumando1 = str_double(base.substr(0,index));
-            sumando2 = str_double(base.substr(index+1, expr.size()));
+            int b_index=find_operator(base);
+            
+            sumando1 = str_double(base.substr(0,b_index));
+            sumando2 = stod(base.substr(b_index+1, base.size()));
             resultado = power(sumando1, sumando2);
             reescribir(expr, resultado, ini, fin);
         }
@@ -228,16 +295,17 @@ int main() {
     cin>>expr;
     calculadora *operacion;
     while (tiene_operador(expr)) {
-        if (expr[find_operator(expr)] == '+') {
+        cout<<"-----"<<expr<<endl;
+        if (expr[find_operator(expr)] == '+'|| expr[find_operator(expr)] == '-') {
             operacion = new suma;
             operacion->operar(expr);
             delete operacion;
         }
-        else if (expr[find_operator(expr)] == '-') {
-            operacion = new resta;
-            operacion->operar(expr);
-            delete operacion;
-        }
+        /* else if (expr[find_operator(expr)] == '-') { */
+        /*     operacion = new resta; */
+        /*     operacion->operar(expr); */
+        /*     delete operacion; */
+        /* } */
         else if (expr[find_operator(expr)] == '*') {
             operacion = new multiplicacion;
             operacion->operar(expr);
