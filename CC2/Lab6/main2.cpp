@@ -85,7 +85,11 @@ string extraer_expresion(string expr, int op_index, int& ini, int& fin) {
     if (i>=expr.size()) {
         tmp= tmp + '0';
     } else {
-        while ( !es_op(expr[i]) ) {
+        if (expr[op_index+1] == '-' ) {
+            tmp=tmp +'-';
+            i=op_index+2;
+        }
+        while ( !es_operador(expr[i]) ) {
             tmp = tmp + expr[i]; 
             i++;
             if (i >= expr.size()) break;
