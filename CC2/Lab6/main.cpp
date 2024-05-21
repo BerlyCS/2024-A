@@ -10,7 +10,7 @@ o no.
 using namespace std;
 class super {
     public:
-        void print() {
+        virtual void print() {
             cout<<"super"<<'\n';
         }
 };
@@ -23,14 +23,20 @@ class infer : public super {
 };
 
 int main() {
-    infer obj;
-    obj.print();
-    static_cast<super>(obj).print();
-    super(obj).print();
+    /* infer obj; */
+    /* obj.print(); */
+    /* static_cast<super>(obj).print(); */
+    /* super(obj).print(); */
 
     super sup1;
     infer *inf1 = static_cast<infer*>(&sup1);
     inf1->print();
-    /* dynamic_cast<jioririlljedljieorfohifae>() */
+
+    infer inf2;
+    super *sup2 = dynamic_cast<super*>(&inf2);
+    sup2->print();
+
+    /* super *sup = new super; */
+    /* infer *inf = sup; */
 }
 

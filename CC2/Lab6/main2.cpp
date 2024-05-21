@@ -10,17 +10,18 @@ Operacion 3 : -3 * -3 - 3 - -3.5
 Tenga en consideraci ́on que los resultados deben de respetar la precedencia de operadores. Se tendr ́a pun-
 tuaci ́on extra por agregar m ́as operadores al programa.
  */ 
+#include <cmath>
 #include <iostream>
 #include <string>
 using namespace std;
 
-int power(int num, int p) {
+int power(double num, int p) {
     int base = num;
     if (p < 1) {
         for (int i=p;i<1;i++){
             num /= base;
-            return num;
         }
+        return num;
     }
     for (int i=0;i<p-1;i++){
         num *= base;
@@ -146,17 +147,17 @@ void reescribir(string& key, double value, int ini, int fin) {
     key = key.substr(0,ini) + to_string(value) + key.substr(fin,key.size());
 }
 
-string operar(string expr) {
-    int index = find_operator(expr);
-    int ini, fin;
-    string base = extraer_expresion(expr, index, ini, fin);
-    double resultado = operacion(base);
-    reescribir(expr, resultado, ini, fin);
-    /* cout<<expr<<endl; */
-    /* cout<<ini<<' '<<fin<<endl; */
-    /* cout<<expr.substr(ini, fin)<<endl; */
-    return expr;
-}
+/* string operar(string expr) { */
+/*     int index = find_operator(expr); */
+/*     int ini, fin; */
+/*     string base = extraer_expresion(expr, index, ini, fin); */
+/*     double resultado = operacion(base); */
+/*     reescribir(expr, resultado, ini, fin); */
+/*     /1* cout<<expr<<endl; *1/ */
+/*     /1* cout<<ini<<' '<<fin<<endl; *1/ */
+/*     /1* cout<<expr.substr(ini, fin)<<endl; *1/ */
+/*     return expr; */
+/* } */
 
 class calculadora {
     public:
@@ -252,12 +253,42 @@ class potencia : public calculadora {
             reescribir(expr, resultado, ini, fin);
         }
 };
+
+string parseEXPR(string expr) {
+    string tmp;
+    tmp.push_back(expr[0]);
+    for (int i=1;i<expr.size()-1; i++) {
+        if (expr[i] == ' ') {
+            continue;
+        }
+        else if (expr[i] == '-' && expr[i+1] == '+') {
+            tmp.push_back('-');
+            i++;
+        }
+        else if (expr[i] == '-' && expr[i+1] == '-') {
+            tmp.push_back('+');
+            i++;
+        }
+        else if (expr[i] == '-' && !es_operador(expr[i-1])) {
+            tmp.push_back('+');
+            tmp.push_back('-');
+        }
+        else {
+            tmp.push_back(expr[i]);
+        }
+        /* cout<<tmp<<endl; */
+    }
+    tmp.push_back(expr[expr.size()-1]);
+    return tmp;
+}
+
 int main(int argc, char* argv[]) {
     if (argc == 1) {
         cout<<"Uso ./main {expresion} \n  -Para restar usar a+-b\n";
         return 0;
     }
     string expr = argv[1];
+    expr = parseEXPR(expr);
     calculadora *operacion;
     while (tiene_operador(expr)) {
         /* cout<<"-----"<<expr<<endl; */
@@ -288,5 +319,6 @@ int main(int argc, char* argv[]) {
         }
         
     }
+    /* parseEXPR(expr); */
     cout<<expr<<endl;
 }
