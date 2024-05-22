@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message</title>
+    <script type="text/javascript" src="funciones.js"></script>
+    <script type="text/javascript">
+        function mostrar_nombre() {
+            let txt_nombre;
+            txt_nombre = document.getElementById("nombre").value;
+            alert(txt_nombre);
+        }
+    </script>
+</head>
+<body>
+    <script>
+        function setMensaje(name) {
+            return "Hello " + name + '! \n';
+        }
+        mesage = setMensaje("world");
+        document.write(mesage);
+        document.addEventListener(DOMTokenList);
+        setTimeout(() => {document.write("Hola");}, 3000);
+    </script>
+    <section>
+        <button onclick="prompt('Click!')">Click</button>
+    </section>
+    <section>
+        <label for="nombre">Nombre</label><br>
+        <input type="text" id="nombre">
+        <button onclick="mostrar_nombre()">Enviar</button>
+
+    </section>
+</body>
+</html>

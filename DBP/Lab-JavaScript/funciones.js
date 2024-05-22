@@ -1,0 +1,3 @@
+function array(array, size) {
+    
+}
