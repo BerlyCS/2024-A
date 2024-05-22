@@ -10,7 +10,6 @@ Operacion 3 : -3 * -3 - 3 - -3.5
 Tenga en consideraci ́on que los resultados deben de respetar la precedencia de operadores. Se tendr ́a pun-
 tuaci ́on extra por agregar m ́as operadores al programa.
  */ 
-#include <cmath>
 #include <iostream>
 #include <string>
 using namespace std;
@@ -88,23 +87,6 @@ string extraer_expresion(string expr, int op_index, int& ini, int& fin) {
     return tmp;
 }
 
-//3+4
-/* double operacion(string suma) { */
-/*     string num; */
-/*     int op_index; */
-/*     double a,b; */
-/*     for (int i=0; i<suma.size(); i++) { */
-/*         if (suma[i] == '+') { */
-/*             op_index = i; */
-/*             break; */
-/*         } */
-/*     } */
-/*     a = str_double(suma.substr(0,op_index)); */
-/*     b = str_double(suma.substr(op_index+1, suma.size())); */
-/*     /1* cout << a << ' ' << b; *1/ */
-/*     return a+b; */
-/* } */
-
 int find_operator(string key) {
     for (int i=0; i<key.size(); i++) {
         if (key[i]=='^') {
@@ -118,12 +100,7 @@ int find_operator(string key) {
     }
 
     int i;
-    /* for (; i<key.size() -1; i++) { */
-    /*     if ((key[i]=='+' || key[i]=='-') && */
-    /*         (key[i+1] != '+' || key[i+1] != '-' )) { */
-    /*         return i; */
-    /*     } */
-    /* } */
+
     for (i=1; i<key.size(); i++) {
         if (key[i]=='+' || key[i]=='-') {
             return i;
@@ -143,21 +120,8 @@ bool tiene_operador(string key) {
 }
 
 void reescribir(string& key, double value, int ini, int fin) {
-    /* cout<<key.substr(0,ini)<<' '<<key.substr(fin, key.size())<<endl; */
     key = key.substr(0,ini) + to_string(value) + key.substr(fin,key.size());
 }
-
-/* string operar(string expr) { */
-/*     int index = find_operator(expr); */
-/*     int ini, fin; */
-/*     string base = extraer_expresion(expr, index, ini, fin); */
-/*     double resultado = operacion(base); */
-/*     reescribir(expr, resultado, ini, fin); */
-/*     /1* cout<<expr<<endl; *1/ */
-/*     /1* cout<<ini<<' '<<fin<<endl; *1/ */
-/*     /1* cout<<expr.substr(ini, fin)<<endl; *1/ */
-/*     return expr; */
-/* } */
 
 class calculadora {
     public:
@@ -170,7 +134,6 @@ class suma : public calculadora {
             int index = find_operator(expr);
             int ini, fin;
             string base = extraer_expresion(expr, index, ini, fin);
-            /* cout<<"bas:"<<base<<endl; */
             double resultado;
             double sumando1,sumando2;
             int b_index=find_operator(base);
@@ -188,7 +151,6 @@ class multiplicacion : public calculadora {
             int index = find_operator(expr);
             int ini, fin;
             string base = extraer_expresion(expr, index, ini, fin);
-            /* cout<<"bas:"<<base<<endl; */
             double resultado;
             double factor1,factor2;
             int b_index=find_operator(base);
@@ -206,16 +168,12 @@ class division : public calculadora {
             int index = find_operator(expr);
             int ini, fin;
             string base = extraer_expresion(expr, index, ini, fin);
-            /* cout<<ini<<' '<<fin<<index<<endl; */
-            /* cout<<"bas:"<<base<<endl; */
             double resultado;
             double numerador,denominador;
             int b_index=find_operator(base);
-            /* cout<<base.substr(b_index+1,base.size())<<endl; */
             
             numerador = str_double(base.substr(0,b_index));
             denominador = str_double(base.substr(b_index+1, base.size()));
-            /* cout<<sumando1<<' '<<sumando2<<endl; */
             resultado = double(numerador / denominador);
             reescribir(expr, resultado, ini, fin);
         }
@@ -227,7 +185,6 @@ class potencia : public calculadora {
             int index = find_operator(expr);
             int ini, fin;
             string base = extraer_expresion(expr, index, ini, fin);
-            /* cout<<"bas:"<<base<<endl; */
             double resultado;
             double Base, coeficiente;
             int b_index=find_operator(base);
@@ -261,7 +218,6 @@ string parseEXPR(string expr) {
         else {
             tmp.push_back(expr[i]);
         }
-        /* cout<<tmp<<endl; */
     }
     tmp.push_back(expr[expr.size()-1]);
     return tmp;
@@ -276,17 +232,11 @@ int main(int argc, char* argv[]) {
     expr = parseEXPR(expr);
     calculadora *operacion;
     while (tiene_operador(expr)) {
-        /* cout<<"-----"<<expr<<endl; */
         if (expr[find_operator(expr)] == '+'|| expr[find_operator(expr)] == '-') {
             operacion = new suma;
             operacion->operar(expr);
             delete operacion;
         }
-        /* else if (expr[find_operator(expr)] == '-') { */
-        /*     operacion = new resta; */
-        /*     operacion->operar(expr); */
-        /*     delete operacion; */
-        /* } */
         else if (expr[find_operator(expr)] == '*') {
             operacion = new multiplicacion;
             operacion->operar(expr);
@@ -304,6 +254,5 @@ int main(int argc, char* argv[]) {
         }
         
     }
-    /* parseEXPR(expr); */
     cout<<expr<<endl;
 }
