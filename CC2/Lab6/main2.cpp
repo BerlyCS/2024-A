@@ -176,26 +176,11 @@ class suma : public calculadora {
             int b_index=find_operator(base);
             
             sumando1 = str_double(base.substr(0,b_index));
-            sumando2 = stod(base.substr(b_index+1, base.size()));
+            sumando2 = str_double(base.substr(b_index+1, base.size()));
             resultado = sumando1 + sumando2;
             reescribir(expr, resultado, ini, fin);
         }
 };
-
-/* class resta : public calculadora { */
-/*     public: */
-/*         void operar(string& expr) override{ */
-/*             int index = find_operator(expr); */
-/*             int ini, fin; */
-/*             string base = extraer_expresion(expr, index, ini, fin); */
-/*             double resultado; */
-/*             double sumando1,sumando2; */
-/*             sumando1 = str_double(base.substr(0,index)); */
-/*             sumando2 = str_double(base.substr(index+1, expr.size())); */
-/*             resultado = sumando1 - sumando2; */
-/*             reescribir(expr, resultado, ini, fin); */
-/*         } */
-/* }; */
 
 class multiplicacion : public calculadora {
     public:
@@ -205,12 +190,12 @@ class multiplicacion : public calculadora {
             string base = extraer_expresion(expr, index, ini, fin);
             /* cout<<"bas:"<<base<<endl; */
             double resultado;
-            double sumando1,sumando2;
+            double factor1,factor2;
             int b_index=find_operator(base);
             
-            sumando1 = str_double(base.substr(0,b_index));
-            sumando2 = stod(base.substr(b_index+1, base.size()));
-            resultado = sumando1 * sumando2;
+            factor1 = str_double(base.substr(0,b_index));
+            factor2 = str_double(base.substr(b_index+1, base.size()));
+            resultado = factor1 * factor2;
             reescribir(expr, resultado, ini, fin);
         }
 };
@@ -224,14 +209,14 @@ class division : public calculadora {
             /* cout<<ini<<' '<<fin<<index<<endl; */
             /* cout<<"bas:"<<base<<endl; */
             double resultado;
-            double sumando1,sumando2;
+            double numerador,denominador;
             int b_index=find_operator(base);
             /* cout<<base.substr(b_index+1,base.size())<<endl; */
             
-            sumando1 = str_double(base.substr(0,b_index));
-            sumando2 = stod(base.substr(b_index+1, base.size()));
+            numerador = str_double(base.substr(0,b_index));
+            denominador = str_double(base.substr(b_index+1, base.size()));
             /* cout<<sumando1<<' '<<sumando2<<endl; */
-            resultado = sumando1 / sumando2;
+            resultado = double(numerador / denominador);
             reescribir(expr, resultado, ini, fin);
         }
 };
@@ -244,12 +229,12 @@ class potencia : public calculadora {
             string base = extraer_expresion(expr, index, ini, fin);
             /* cout<<"bas:"<<base<<endl; */
             double resultado;
-            double sumando1,sumando2;
+            double Base, coeficiente;
             int b_index=find_operator(base);
             
-            sumando1 = str_double(base.substr(0,b_index));
-            sumando2 = stod(base.substr(b_index+1, base.size()));
-            resultado = power(sumando1, sumando2);
+            Base = str_double(base.substr(0,b_index));
+            coeficiente = str_double(base.substr(b_index+1, base.size()));
+            resultado = power(Base, coeficiente);
             reescribir(expr, resultado, ini, fin);
         }
 };
