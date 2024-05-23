@@ -11,32 +11,29 @@ using namespace std;
 class super {
     public:
         virtual void print() {
-            cout<<"super"<<'\n';
+            cout<<"superior"<<'\n';
         }
 };
 
 class infer : public super {
     public:
-        void print() {
-            cout<<"infer"<<'\n';
+        void print() override{
+            cout<<"inferior"<<'\n';
         }
 };
 
 int main() {
-    /* infer obj; */
-    /* obj.print(); */
-    /* static_cast<super>(obj).print(); */
-    /* super(obj).print(); */
+    infer inf0;
+    super(inf0).print();
 
     super sup1;
-    infer *inf1 = static_cast<infer*>(&sup1);
+    infer* inf1 = static_cast<infer*>(&sup1);
     inf1->print();
 
-    infer inf2;
-    super *sup2 = dynamic_cast<super*>(&inf2);
-    sup2->print();
+    /* super *sup2 = new super; */
+    /* infer *inf2 = dynamic_cast<infer*>(sup2); */
+    /* inf2->print(); */
 
-    /* super *sup = new super; */
-    /* infer *inf = sup; */
+    inf0.super::print();//superior
 }
 

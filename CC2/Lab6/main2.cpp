@@ -29,7 +29,7 @@ int power(double num, int p) {
 }
 
 bool es_operador(char letra) {
-    if ( letra=='+' || letra=='*' || letra=='^' || letra=='/' || letra=='&' || letra=='|')
+    if ( letra=='+' || letra=='*' || letra=='^' || letra=='/')
         return true;
 
     return false;
@@ -204,6 +204,7 @@ string parseEXPR(string expr) {
             continue;
         }
         else if (expr[i] == '-' && expr[i+1] == '+') {
+            tmp.push_back('+');
             tmp.push_back('-');
             i++;
         }
