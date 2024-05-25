@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con JavaScript</title>
+    <style>
+        .color-text {
+            background-color: gray;
+            border-radius: 3px;
+            border-color: darkgray;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="userInput">Ingresa algo:</label>
+        <input type="text" id="userInput" name="userInput" required>
+        <button type="button" onclick="displayInput()">Enviar</button>
+    </form>
+    
+    <div id="outputArea"></div>
+    
+    <script src="chat-like.js"></script>
+</body>
+</html>

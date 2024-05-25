@@ -2,26 +2,51 @@
     margin: 10%;
 }
 
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
 .pd-10 {
     padding: 10%;
 }
 
 .form-container {
-    background-color: white;
-    padding: 10px;
-    margin: 3%;
+    background-color: #EFF1F3;
+    padding: 5px 5px;
+    margin: 5%;
     border-radius: 15px;
-    box-shadow: 0 0 15px #00000065;
+    box-shadow: 0 0 15px #00000045;
 }
 
 .bg-gray {
-    background-color: #f1f0f0;
+    background-color: #223843;
 }
 
 .btn {
     margin: 5px;
 }
 
+.btn-primary {
+    background-color: #223843;
+    border-color: #23363f;
+    box-shadow: 0 0 5px #030303;
+}
+
+.btn:hover {
+    background-color: #0E4749;
+    border-color:#0E4749;
+}
+
 .row-sm-1 {
     margin: 5px;
+}
+
+.box-text {
+    background-color: white;
+    border-radius: 6px;
+    border-color: red;
+    padding: 10px;
+    margin: 20px;
+    width: 90%;
 }

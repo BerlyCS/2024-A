@@ -1,3 +1,5 @@
 function escribir() {
-    let name = document.getElementById("nombre");
+    
+    document.getElementsById('namePlace').value;
+    return false;
 }
