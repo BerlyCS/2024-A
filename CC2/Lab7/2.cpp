@@ -10,11 +10,13 @@ class fraccion {
         int num, den;
     public:
         void simplificar() {
+            print(); 
             int min = num < den ? num : den;
-            while (min != 1) {
+            while (min > 1) {
                 if (den%min == 0 && num%min==0) {
                     den = den/min;
                     num = num/min;
+                    cout<<min<<endl;
                 }
                 min--;
             }
@@ -22,7 +24,7 @@ class fraccion {
         fraccion(int a, int b):num(a),den(b) {
             simplificar();
         }
-        fraccion() {}
+        fraccion() : num(0), den(1) {}
         void print() {
             cout << num << '/' << den << '\n';
         }
@@ -33,10 +35,33 @@ class fraccion {
             result.simplificar();
             return result;
         }
+        fraccion operator-(const fraccion& resta) {
+            fraccion result;
+            result.num = num*resta.den - den*resta.num;
+            result.den = den * resta.den;
+            result.simplificar();
+            return result; 
+        }
+        fraccion operator*(const fraccion& factor) {
+            fraccion result;
+            result.num = num * factor.num;
+            result.den = den * factor.den;
+            result.simplificar();
+            return result;
+        }
+        fraccion operator/(const fraccion& factor) {
+            fraccion result;
+            result.num = den * factor.num;
+            result.den = num * factor.den;
+            result.simplificar();
+            return result;
+        }
+        
 };
 int main() {
     fraccion test(2,4);
-    test.print();
     fraccion a(2,4),b(5,4);
-    (a+b).print();
+    /* (a+b).print(); */
+    (a-b).print();
+    /* (a*b).print(); */
 }
