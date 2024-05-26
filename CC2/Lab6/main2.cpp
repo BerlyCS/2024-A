@@ -14,8 +14,8 @@ tuaci ́on extra por agregar m ́as operadores al programa.
 #include <string>
 using namespace std;
 
-int power(double num, int p) {
-    int base = num;
+double power(double num, int p) {
+    double base = num;
     if (p < 1) {
         for (int i=p;i<1;i++){
             num /= base;
