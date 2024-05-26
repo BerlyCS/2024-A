@@ -13,7 +13,7 @@
 
 <body class="bg-gray">
     <div class="form-container" id="formulario">
-        <form class="row md-8 row-sm-1" onsubmit="escribir();">
+        <form class="row md-8 row-sm-1" onsubmit="return false">
             <div class="col-md-6 col-sm-12">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" required>
@@ -57,18 +57,18 @@
                     <option value="Ucayali">Ucayali</option>
                 </select>
             </div>
-            <div class="col-12" onclick="escribir();">
-                <button class="btn btn-primary" type="submit">Enviar</button>
+            <div class="col-12">
+                <input title="Enviar" class="btn btn-primary" type="submit" onclick="escribir();">
             </div>
             <div class="col-12">
                 <button class="btn btn-primary" type="reset">Reset</button>
             </div>
         </form>
-        <div class="box-text" id="namePlace">
-            
+        <div class="box-text">
+            <p id="namePlace"></p>
         </div>
-        <div class="box-text" id="apellidoPlace">
-
+        <div class="box-text">
+            <p id="apellidoPlace"></p>
         </div>
     </div>
 </body>
