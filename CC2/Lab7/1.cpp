@@ -6,7 +6,6 @@ Debe de iniciar un vector<int> con cada uno de los valores separados en comas.
 */
 
 #include <iostream>
-#include <vector>
 using namespace std;
 
 template <typename X>

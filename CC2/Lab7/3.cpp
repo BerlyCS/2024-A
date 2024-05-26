@@ -34,7 +34,7 @@ class vect {
             return size;
         }
         void operator++(int) {
-            cout<<data[index++];
+            cout<<data[index++] << ' ';
             if (index == size) {
                 index = 0;
             }
