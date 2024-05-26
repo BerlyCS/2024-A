@@ -1,11 +1,11 @@
 function escribir() {
     let name = document.getElementById('nombre').value;
     let apellido = document.getElementById('apellido').value;
-    let CUI = document.getElementById('CUI').value;
+    let dni = document.getElementById('dni').value;
     let ciudad = document.getElementById('region').value;
     console.log(name);
     console.log(apellido);
-    console.log(CUI);
+    console.log(dni);
     console.log(ciudad);
     alert("...");
 
