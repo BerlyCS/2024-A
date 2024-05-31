@@ -53,7 +53,7 @@ void fecha::operator++(int) {
 }
 
 void fecha::operator--(int) {
-    if (dia-1 <= 0) {
+    if (dia-1 < 1) {
         mes--;
         if (mes <= 0) {
             año--;
@@ -103,14 +103,23 @@ void fecha::verificar() {
     if (mes >= 13) {
         mes = 12;
     }
-    if (!(mes == 1 || mes == 3 || mes==5 || mes==7 || mes==8 || mes==10 || mes==12) && dia >= 31) {
-        if (mes == 2)
-            dia = 28;
-        else
-            dia = 30;
-    } else if (dia >= 32){
-        dia = 31;
+
+    if ((mes == 1 || mes == 3 || mes==5 || mes==7 || mes==8 || mes==10 || mes==12) && dia>31) {
+        dia=31;
     }
+    else if (es_bisiesto() && mes==2) {
+        dia=29;
+    }
+    else if (mes == 2 && dia>28) {
+        dia=28;
+    }
+    else if ((mes==4 || mes==6 || mes==9 || mes==11) && dia>30) {
+        dia=30;
+    }
+    else if (dia == 0 && (año!=0 || mes!=0)) {
+        dia=1;
+    }
+
 }
 
 void fecha::set(short d, short m, int a) {
@@ -137,45 +146,39 @@ void fecha::operator-=(int a) {
 }
 
 void fecha::operator+=(const fecha& b) {
-    año += b.año;
-
-    dia += b.dia;
-    int u = ultimo_dia();
-    if (dia > u) {
-        mes++;
-        dia = dia%u;
-        if (dia > ultimo_dia()) {
-            dia = dia%ultimo_dia();
-            mes++;
-        }
+    for (int i=0; i<b.dia; i++) {
+        (*this)++;
     }
 
     mes += b.mes;
     if (mes > 12) {
         año++;
-        mes = mes%12;
+        mes = mes-12;
     }
+
+    año += b.año;
 }
 
 void fecha::operator-=(const fecha& b) {
     año -= b.año;
 
-    dia-= b.dia;
+    mes -= b.mes;
+    if (mes < 1) {
+        mes += 12;
+        año--;
+    }
 
-    if (dia < 1) {
-        
+    for (int i=0; i<b.dia; i++) {
+        (*this)--;
     }
 }
 
 int main() {
-    fecha b(29,2,1600);
-    fecha a(31,1,1500);
+    fecha a(29,2,2000);
+    fecha b(1,1,1600);
+    fecha c(1,0,0);
+    a += c;
     a.print();
-    b.print();
-
-    cout<<b.es_bisiesto()<<endl;
-    cout<<b.es_ultimo_dia()<<endl;
-
-    a += b;
+    a -= c;
     a.print();
 }
