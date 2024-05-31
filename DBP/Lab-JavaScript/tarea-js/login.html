@@ -12,63 +12,51 @@
 </head>
 
 <body class="bg-gray">
-    <div class="form-container" id="formulario">
+    <div class="form-container container-sm" id="formulario">
         <form class="row md-8 row-sm-1" onsubmit="return false">
-            <div class="col-md-6 col-sm-12">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" required>
+            <div class="col-md-4 col-sm-6">
+                <label for="nombre1" class="form-label">Primer nombre</label>
+                <input type="text" class="form-control" id="nombre1" required>
             </div>
-            <div class="col-md-6 col-sm-12">
-                <label for="apellido" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="apellido" required>
+            <div class="col-md-4 col-sm-6">
+                <label for="nombre2" class="form-label">Segundo nombre</label>
+                <input type="text" class="form-control" id="nombre2" required>
             </div>
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-4 col-sm-6">
+                <label for="apellido1" class="form-label">Primer Apellido</label>
+                <input type="text" class="form-control" id="apellido1" required>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <label for="apellido2" class="form-label">Segundo Apellido</label>
+                <input type="text" class="form-control" id="apellido2" required>
+            </div>
+            <div class="col-md-4 col-sm-6">
                 <label for="dni" class="form-label">DNI</label>
                 <input type="text" class="form-control" id="dni" required>
             </div>
-            <div class="col-md-6 col-sm-6">
-                <label for="region" class="form-label">Ciudad</label>
-                <select class="form-select" id="region" required>
-                    <option selected disabled value="">Elegir...</option>
-                    <option value="Amazonas">Amazonas</option>
-                    <option value="Ancash">Ancash</option>
-                    <option value="Apurimac">Apurímac</option>
-                    <option value="Arequipa">Arequipa</option>
-                    <option value="Ayacucho">Ayacucho</option>
-                    <option value="Cajamarca">Cajamarca</option>
-                    <option value="Callao">Callao</option>
-                    <option value="Cusco">Cusco</option>
-                    <option value="Huancavelica">Huancavelica</option>
-                    <option value="Huanuco">Huánuco</option>
-                    <option value="Ica">Ica</option>
-                    <option value="Junin">Junín</option>
-                    <option value="LaLibertad">La Libertad</option>
-                    <option value="Lambayeque">Lambayeque</option>
-                    <option value="Lima">Lima</option>
-                    <option value="Loreto">Loreto</option>
-                    <option value="MadredeDios">Madre de Dios</option>
-                    <option value="Moquegua">Moquegua</option>
-                    <option value="Pasco">Pasco</option>
-                    <option value="Piura">Piura</option>
-                    <option value="Puno">Puno</option>
-                    <option value="SanMartin">San Martín</option>
-                    <option value="Tacna">Tacna</option>
-                    <option value="Tumbes">Tumbes</option>
-                    <option value="Ucayali">Ucayali</option>
-                </select>
+            <div class="col-md-4 col-sm-6">
+                <label for="fecha" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="fecha" required>
             </div>
-            <div class="col-12">
+            <div class="col-md-2 col-xm-12">
                 <input title="Enviar" class="btn btn-primary" type="submit" onclick="escribir();">
             </div>
-            <div class="col-12">
-                <button class="btn btn-primary" type="reset">Reset</button>
+            <div class="col-md-6 col-xm-12">
+                <input class="btn btn-primary" type="reset">
             </div>
+            
         </form>
+        <p class="pd-20px">Nombre completo</p>
         <div class="box-text">
-            <p id="namePlace"></p>
+            <p id="nombrePlace"></p>
         </div>
+        <p class="pd-20px">Ultimo digito de DNI</p>
         <div class="box-text">
-            <p id="apellidoPlace"></p>
+            <p id="dniPlace"></p>
+        </div>
+        <p class="pd-20px">Edad</p>
+        <div class="box-text">
+            <p id="edadPlace"></p>
         </div>
     </div>
 </body>
