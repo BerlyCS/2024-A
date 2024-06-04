@@ -34,7 +34,12 @@ class usuario {
         void conectar(pre_observador& observer);
         void desconectar(pre_observador& observer);
         void notificar();
+        void printinfo() const;
 };
+
+void usuario::printinfo() const{
+    cout<<this->nombre<<endl;
+}
 
 class observador : public pre_observador {
     public:
@@ -53,23 +58,27 @@ class chat {
         }
         void registrar(usuario& alumno);
         void enviar(string);
+        void lista() const;
 };
 
 void chat::enviar(string mensaje) {
 
 }
 
+void chat::lista() const {
+    for (int i=0;i<count;i++) {
+        list[i]->printinfo();
+    }
+}
 void chat::registrar(usuario& alumno) {
     usuario** tmp = new usuario*[count];
     for (int i=0; i<count;i++) {
         tmp[i] = list[i];
     }
-    usuario* nv = new usuario(alumno);
-    tmp[count] = nv;
+    tmp[count] = new usuario(alumno);;
     count++;
     delete list;
     list = tmp;
-
 }
 
 int main() {
@@ -80,6 +89,8 @@ int main() {
 
     sistema.registrar(juan);
     sistema.registrar(jose);
+
+    sistema.lista();
 
     
 }
