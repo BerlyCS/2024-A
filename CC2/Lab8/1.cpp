@@ -9,6 +9,7 @@ ya implementadas en C++. En caso de encontrar una funcion propia del lenguaje qu
 5 puntos menos sobre la nota por cada una de las funciones utilizadas
 */
 #include <iostream>
+#include <ostream>
 using namespace std;
 
 class fecha {
@@ -177,8 +178,36 @@ int main() {
     fecha a(29,2,2000);
     fecha b(1,1,1600);
     fecha c(1,0,0);
+    cout<<"a: ";
+    a.print();
+
+    cout<<"b: ";
+    b.print();
+
+    cout<<"c: ";
+    c.print();
+
     a += c;
+    cout<<"a+=c;  ";
+
     a.print();
     a -= c;
+    cout<<"a-=c;  ";
     a.print();
+
+    cout<<"Es a bisiesto: "<<a.es_bisiesto()<<endl;
+    cout<<"Tiene a el ultimo dia: "<<a.es_ultimo_dia()<<endl;
+
+    a.set(30, 2, 2004);
+    a.print();
+
+    cout<<"-------\n";
+    b.print();
+    cout<<"b-- "; 
+    b--;
+    b.print();
+
+    cout<<"b++ ";
+    b++;
+    b.print();
 }
