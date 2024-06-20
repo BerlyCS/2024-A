@@ -22,13 +22,13 @@ class list {
         coord<T>* ptr;
 
     public:
-        list<T>() {
+        list() {
             head = nullptr;
             last= nullptr;
             ptr=nullptr;
         }
 
-        list<T>(T x, T y) {
+        list(T x, T y) {
             head = new coord<T>(x,y);
             ptr = head;
             last = head;
@@ -76,28 +76,45 @@ class list {
             coord<T>* next = ptr->next;
             ptr->next = tmp;
             tmp->next = next;
-            
         }
-
+ 
         void remove(int index) {
-            int i = 0;
-
-            ptr = head;
-            coord<T>* prev, next;
-            while (ptr != nullptr && i++ < index) {
-                prev = ptr;
-                ptr = ptr->next;
+            if (head == nullptr) {
+                return;
             }
 
-            next = ptr->next;
+            if (index == 0) {
+                coord<T>* ptr = head->next;
+                delete head;
+                head = ptr;
+                return;
+            }
+
+            coord<T>* ptr = head;
+            coord<T>* prev = nullptr;
+
+            int i = 0;
+            while (ptr != nullptr && i < index) {
+                prev = ptr;
+                ptr = ptr->next;
+                i++;
+            }
+
+            if (ptr == nullptr) {
+                return;
+            }
+
+            coord<T>* next = ptr->next;
             delete ptr;
-            prev->next = next;
+            if (prev != nullptr) {
+                prev->next = next;
+            }
         }
 
         coord<T>* buscar(T val) {
             ptr = head;
             while (ptr != nullptr) {
-                if (ptr->x == val || ptr->y ) {
+                if (ptr->x == val || ptr->y == val ) {
                     return ptr;
                 }
                 ptr = ptr->next;
@@ -111,19 +128,27 @@ class list {
         T getLastY() {
             return last->y;
         }
+        void print() {
+            ptr = head;
+            while (ptr != nullptr) {
+                cout<<ptr->x<<','<<ptr->y<<' ';
+                ptr = ptr->next;
+            }
+            cout<<endl;
+        }
 };
 
-list<double> leer() {
+void leer() {
     list<double> coleccion;
     ifstream file("DataGen.txt");
     string x,y;
-    int i=0;
+    /* int i=0; */
     auto start = std::chrono::high_resolution_clock::now();
 
     while (file>>x && file>>y) {
         x.pop_back();
         coleccion.insert_ord(stod(x), stod(y));
-        if (i++ % 10000 == 0) cout<<i<<' '<<flush;
+        /* if (i++ % 10000 == 0) cout<<i<<' '<<flush; */
     }
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(stop-start); 
@@ -131,11 +156,12 @@ list<double> leer() {
     cout << " por " << duration.count()/1000 << " segundos" << endl;
     cout<<"Primer Y: "<<coleccion.getFirstY()<<endl;
     cout<<"Ultimo Y: "<<coleccion.getLastY()<<endl;
-    return coleccion;
 }
 
 int main() {
-    /* list<double> test = leer(); */
+    cout<<"Leyendo archivo...\n";
+    leer();
+
     list<double> a;
     a.insert_ord(1., 6.);
     a.insert_ord(1., 4.);
@@ -143,4 +169,9 @@ int main() {
     a.insert_ord(1., 2.);
     a.insert_ord(1., 1.);
     a.insert_ord(1., 5.);
+    a.print();
+    a.remove(0);
+    a.print();
+    cout<<a.buscar(7.)<<' '; //nullptr
+    cout<<a.buscar(1.); //Direccion de a[1]
 }
