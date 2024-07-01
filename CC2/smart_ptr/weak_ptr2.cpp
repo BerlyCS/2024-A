@@ -3,23 +3,25 @@
 #include <memory>
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
-    std::weak_ptr<int> wp;
+    weak_ptr<int> wp;
 
     {
-        std::shared_ptr<int> sp(new int(10));
+        shared_ptr<int> sp(new int(10));
         wp = sp;
-        std::cout << "wp.expired() == " << std::boolalpha
-            << wp.expired() << std::endl;
-        std::cout << "*wp.lock() == " << *wp.lock() << std::endl;
+        cout << "wp.expired() == " << boolalpha
+            << wp.expired() << endl;
+        cout << "*wp.lock() == " << *wp.lock() << endl;
     }
 
     // check expired after sp is destroyed
-    std::cout << "wp.expired() == " << std::boolalpha
-        << wp.expired() << std::endl;
-    std::cout << "(bool)wp.lock() == " << std::boolalpha
-        << (bool)wp.lock() << std::endl;
+    cout << "wp.expired() == " << boolalpha
+        << wp.expired() << endl;
+    cout << "(bool)wp.lock() == " << boolalpha
+        << (bool)wp.lock() << endl;
 
     return (0);
 }
