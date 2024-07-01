@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function clicked() {
+            alert('Me alegro');
+            let data = prompt('Ingrese sus datos bancarios');
+            confirm('Gracias');
+            for (let i = 0; i<1000; i++){
+                document.write(data, '\n');
+            }
+        }
+
+        function fact(num) {
+            if (num <= 0) {
+                return 1;
+            }
+            if (num == 1) {
+                return 1;
+            }
+            if (num > 1) {
+                return fact(num-1)*num;
+            }
+        }
+        document.write(fact(1));
+        let nombres = ["raul", "raul2", "raul3", "ramiro", "ramiro2"];
+        nombres.unshift([3,4,5,"hol", false]);
+        document.write("<br>",nombres[0][4]);
+        for (let nombre of nombres) {
+            document.write("<h3>",nombre," <-",typeof(nombre) ,"<br>","</h2>");
+        }
+        let obj = document.querySelector(".test");
+        document.write("<br>", typeof(obj));
+
+        let res = lambda();
+        document.write(typeof(res));
+        function lambda(f) {
+            return (f/10+1);
+        }  
+        res = lambda(4);
+        document.write(res);
+    </script>
+</head>
+<body>
+    <p onclick="clicked();">Hola</p>
+    <h3 class="test">test</h3>
+</body>
+</html>
