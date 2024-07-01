@@ -10,8 +10,8 @@ class coord {
     public:
     T x,y;
     coord<T>* next;
-    coord<T>() {next=nullptr;}
-    coord<T>(T x, T y) : x(x), y(y) {}
+    coord() {next=nullptr;}
+    coord(T x, T y) : x(x), y(y) {}
 };
 
 template <typename T>
@@ -136,6 +136,16 @@ class list {
             }
             cout<<endl;
         }
+        void write_sorted() {
+            ofstream out("DataSorted.txt");
+
+            ptr = head;
+            while (ptr != nullptr) {
+                out<<ptr->x<<' '<<ptr->y<<endl;
+                ptr = ptr->next;
+            }
+            out.close();
+        }
 };
 
 void leer() {
@@ -156,6 +166,8 @@ void leer() {
     cout << " por " << duration.count()/1000 << " segundos" << endl;
     cout<<"Primer Y: "<<coleccion.getFirstY()<<endl;
     cout<<"Ultimo Y: "<<coleccion.getLastY()<<endl;
+    cout<<"Escribiendo...\n";
+    coleccion.write_sorted();
 }
 
 int main() {
@@ -173,5 +185,6 @@ int main() {
     a.remove(0);
     a.print();
     cout<<a.buscar(7.)<<' '; //nullptr
-    cout<<a.buscar(1.); //Direccion de a[1]
+    cout<<a.buscar(1.)<<' '; //Direccion de a[1]
+    cout<<a.buscar(5.)<<' '; /*Direccion de a[1] */
 }
