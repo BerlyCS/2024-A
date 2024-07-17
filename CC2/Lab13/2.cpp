@@ -19,7 +19,7 @@ public:
 };
 
 int main() {
-    constexpr int a[]={1,2,3,4,5};
+    int a[]={1,2,3,4,5};
     buscar<int,5> finder(a);
 
     int num=3, num2=6;

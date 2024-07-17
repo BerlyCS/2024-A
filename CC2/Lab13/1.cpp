@@ -15,11 +15,6 @@ struct es_primo {
     inline static constexpr bool value = primo(num); 
 };
 
-template <>
-struct es_primo<1> {
-    inline static constexpr bool value = false;
-};
-
 int main() {
     cout<<es_primo<2>::value<<endl;
     cout<<es_primo<1>::value<<endl;
