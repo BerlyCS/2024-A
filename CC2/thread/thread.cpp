@@ -1,7 +1,6 @@
 #include <chrono>
 #include <iostream>
 #include <ostream>
-#include <ratio>
 #include <thread>
 
 /* void make_somethin(int print) { */
