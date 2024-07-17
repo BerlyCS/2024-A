@@ -64,11 +64,20 @@ int main() {
     long sq_size=1000;
     long** mat1, **mat2;
     gen_random(mat1, sq_size,sq_size); gen_random(mat2,sq_size,sq_size);
-    /* printm(mat1, sq_size, sq_size); printm(mat2, sq_size, sq_size); */
-    auto start = std::chrono::high_resolution_clock::now();
-    long** product=multiplicaci(mat1, mat2, sq_size,sq_size);
-    auto stop = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<chrono::milliseconds>(stop-start); 
-    cout << " por " << duration.count() << " ms" << endl;
-    /* printm(suma, sq_size, sq_size); */
+
+    {//Suma
+        auto start = std::chrono::high_resolution_clock::now();
+        long** product=suma_mat(mat1, mat2, sq_size,sq_size);
+        auto stop = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(stop-start); 
+        cout << "Suma en " << duration.count() << " ms" << endl;
+    }
+
+    {//Multiplicacion
+        auto start = std::chrono::high_resolution_clock::now();
+        long** product=multiplicaci(mat1, mat2, sq_size,sq_size);
+        auto stop = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(stop-start); 
+        cout << "Multiplicacion en " << duration.count() << " ms" << endl;
+    }
 }
