@@ -36,7 +36,7 @@ void gen_vector(long **& mat, long x ,long y) {
 }
 
 void sumar(long** m1,long** m2,long** res,long size, int core,int step) {
-    for (long i=core*step; i<(core+1)*step; i++) {
+    for (long i=core*step; i<((core+1)*step < size ? (core+1)*step : size ); i++) {
         for (long j=0; j<size; j++) {
             res[i][j] = m1[i][j] + m2[i][j];
         }
@@ -46,7 +46,8 @@ void sumar(long** m1,long** m2,long** res,long size, int core,int step) {
 long** suma_mat(long** mat1, long** mat2, long x, long y) {
     vector<thread> hilos;
     int cores=thread::hardware_concurrency();
-    int steps=x/cores;
+    /* int cores=8; */
+    int steps=x/cores +1;
     if (steps == 0) {
         cores = x;
         steps = 1;
@@ -69,7 +70,7 @@ long** suma_mat(long** mat1, long** mat2, long x, long y) {
 
 void operar(long** m1, long** m2, long** res, long core,  long step,long size) 
 {
-    for (long i=core*step; i<(core+1)*step; i++) {  
+    for (long i=core*step; i<((core+1)*step < size ? (core+1)*step : size ) ; i++) {  
         for (long j=0; j<size; j++) {
             for (long k=0;k<size; k++) {
 
@@ -82,7 +83,8 @@ void operar(long** m1, long** m2, long** res, long core,  long step,long size)
 long** multiplicaci(long** mat1, long** mat2, long x, long y) {
     vector<thread> hilos;
     int cores=thread::hardware_concurrency();
-    int steps=x/cores;
+    /* int cores =8; */
+    int steps=(x/cores)+1;
     if (steps == 0) {
         cores = x;
         steps = 1;
@@ -104,9 +106,10 @@ long** multiplicaci(long** mat1, long** mat2, long x, long y) {
 }
 
 int main() {
-    long sq_size=1000;
+    long sq_size=10;
     long** mat1, **mat2;
     gen_random(mat1, sq_size,sq_size); gen_random(mat2,sq_size,sq_size);
+    printm(mat1, sq_size, sq_size); printm(mat2, sq_size, sq_size);
 
     {//Suma
         auto start = std::chrono::high_resolution_clock::now();
@@ -114,7 +117,7 @@ int main() {
         auto stop = chrono::high_resolution_clock::now();
         auto duration = chrono::duration_cast<chrono::milliseconds>(stop-start); 
         cout << "Suma en " << duration.count() << " ms" << endl;
-        /* printm(product, sq_size, sq_size); */
+        printm(product, sq_size, sq_size);
     }
 
     {//Multiplicacion
@@ -123,6 +126,6 @@ int main() {
         auto stop = chrono::high_resolution_clock::now();
         auto duration = chrono::duration_cast<chrono::milliseconds>(stop-start); 
         cout << "Multiplicacion en " << duration.count() << " ms" << endl;
-        /* printm(product, sq_size, sq_size); */
+        printm(product, sq_size, sq_size);
     }
 }
